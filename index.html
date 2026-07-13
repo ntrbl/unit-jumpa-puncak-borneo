@@ -32,8 +32,8 @@
                 <p class="card-subtitle">Sila isi maklumat anda di bawah dengan jelas.</p>
             </div>
             
+            <!-- 1. EDITABLE INPUT FORM -->
             <form id="visitorForm" class="form-layout">
-                
                 <!-- SEKSYEN 1: PELAWAT -->
                 <div class="form-section">
                     <h3 class="section-title">
@@ -42,7 +42,7 @@
                     
                     <div class="input-group">
                         <label class="input-label">Nama Penuh Anda</label>
-                        <input type="text" id="namaPelawat" required class="form-input" placeholder="Masukkan Nama Penuh">
+                        <input type="text" id="namaPelawat" required class="form-input" placeholder="Tulis nama penuh anda">
                     </div>
                     
                     <div class="input-group">
@@ -76,7 +76,7 @@
                     
                     <div class="input-group">
                         <label class="input-label">Nama Penuh Banduan</label>
-                        <input type="text" id="namaBanduan" required class="form-input" placeholder="Masukkan Nama Penuh">
+                        <input type="text" id="namaBanduan" required class="form-input" placeholder="Tulis nama penuh banduan">
                     </div>
                     
                     <div class="input-group">
@@ -92,11 +92,49 @@
                 </div>
 
                 <button type="submit" class="submit-btn">
-                    Hantar Pendaftaran (Selesai)
+                    Semak Maklumat Pendaftaran
                 </button>
             </form>
+
+            <!-- 2. READ-ONLY REVIEW SCREEN (Hidden by default) -->
+            <div id="reviewContainer" class="hidden form-layout">
+                <h3 class="section-title">Sila Semak Maklumat Anda</h3>
+                <p class="card-subtitle mb-4" style="text-align: left; border-bottom: none; padding-bottom: 0;">Sila pastikan semua maklumat di bawah adalah betul sebelum menghantar.</p>
+                
+                <div class="review-box">
+                    <div class="review-item">
+                        <span class="review-label">Nama Pelawat</span>
+                        <span id="revNamaPelawat" class="review-value"></span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">No. KP / Pasport</span>
+                        <span id="revKpPelawat" class="review-value"></span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">No. Telefon</span>
+                        <span id="revTelPelawat" class="review-value"></span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Hubungan</span>
+                        <span id="revHubungan" class="review-value"></span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Nama Banduan</span>
+                        <span id="revNamaBanduan" class="review-value"></span>
+                    </div>
+                    <div class="review-item no-border">
+                        <span class="review-label">No. Daftar Banduan</span>
+                        <span id="revNoDaftar" class="review-value"></span>
+                    </div>
+                </div>
+
+                <div class="button-row">
+                    <button type="button" id="backEditBtn" class="edit-btn">Kembali</button>
+                    <button type="button" id="finalSubmitBtn" class="confirm-btn">Hantar</button>
+                </div>
+            </div>
             
-            <!-- Success Notification -->
+            <!-- 3. SUCCESS NOTIFICATION (Hidden by default) -->
             <div id="successMessage" class="hidden success-box">
                 <div class="success-icon-container">
                     <svg class="success-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
@@ -109,7 +147,7 @@
     </main>
 
     <footer class="main-footer">
-        <p>&copy; Sistem Pendaftaran Unit Jumpa Puncak Borneo.</p>
+        <p>&copy; Sistem Pendaftaran Penjara Puncak Borneo.</p>
     </footer>
 
     <!-- Link to external JS -->
