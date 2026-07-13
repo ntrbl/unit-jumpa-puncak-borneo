@@ -231,7 +231,7 @@ body {
     height: 48px;
 }
 
-/* Premium Primary Blue Button */
+/* Primary Form Button */
 .submit-btn {
     width: 100%;
     background-color: var(--primary-blue);
@@ -248,6 +248,78 @@ body {
 
 .submit-btn:hover {
     background-color: #1d4ed8;
+}
+
+/* --- Review Container Styles --- */
+.review-box {
+    background-color: #f8fafc;
+    border: 1.5px solid var(--border-input);
+    border-radius: 12px;
+    padding: 8px 18px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+}
+
+.review-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1.5px solid #e2e8f0;
+    font-size: 14px;
+}
+
+.review-item.no-border {
+    border-bottom: none;
+}
+
+.review-label {
+    font-weight: 600;
+    color: var(--text-slate);
+}
+
+.review-value {
+    font-weight: 700;
+    color: var(--text-dark);
+    text-align: right;
+}
+
+/* Dual Button Row Layout */
+.button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.edit-btn {
+    background-color: #f1f5f9;
+    border: 1.5px solid var(--border-input);
+    color: var(--text-dark);
+    font-weight: 700;
+    padding: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.15s ease;
+}
+
+.edit-btn:hover {
+    background-color: #e2e8f0;
+}
+
+.confirm-btn {
+    background-color: #059669; /* Emerald Green for confirmation */
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.15s ease;
+}
+
+.confirm-btn:hover {
+    background-color: #047857;
 }
 
 /* Success Card State */
@@ -312,4 +384,8 @@ body {
     border-top: 1px solid var(--border-light);
     background-color: #ffffff;
     margin-top: auto;
+}
+
+.mb-4 {
+    margin-bottom: 16px !important;
 }
