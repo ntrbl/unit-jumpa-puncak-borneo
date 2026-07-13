@@ -12,8 +12,11 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// Handle Form Submission
-document.getElementById('visitorForm').addEventListener('submit', async (e) => {
+// Global variable to temporarily hold verified data before final submission
+let verifiedData = null;
+
+// Handle Form "Semak" Click
+document.getElementById('visitorForm').addEventListener('submit', (e) => {
     e.preventDefault();
     
     const kpField = document.getElementById('kpPelawat');
@@ -71,6 +74,44 @@ document.getElementById('visitorForm').addEventListener('submit', async (e) => {
         return;
     }
 
+    // Save verified inputs in temporary variable
+    verifiedData = {
+        namaPelawat,
+        kpPelawat,
+        telPelawat,
+        hubungan,
+        namaBanduan,
+        noDaftarBanduan
+    };
+
+    // Populate Review Screen Spans
+    document.getElementById('revNamaPelawat').textContent = namaPelawat;
+    document.getElementById('revKpPelawat').textContent = kpPelawat;
+    document.getElementById('revTelPelawat').textContent = telPelawat;
+    document.getElementById('revHubungan').textContent = hubungan;
+    document.getElementById('revNamaBanduan').textContent = namaBanduan;
+    document.getElementById('revNoDaftar').textContent = noDaftarBanduan;
+
+    // Transition view: Hide input form, show review screen
+    document.getElementById('visitorForm').classList.add('hidden');
+    document.getElementById('reviewContainer').classList.remove('hidden');
+});
+
+// Handle "Kembali Edit" Button Click
+document.getElementById('backEditBtn').addEventListener('click', () => {
+    // Transition view back: Hide review screen, show input form
+    document.getElementById('reviewContainer').classList.add('hidden');
+    document.getElementById('visitorForm').classList.remove('hidden');
+});
+
+// Handle Final "Hantar" Button Click
+document.getElementById('finalSubmitBtn').addEventListener('click', async () => {
+    if (!verifiedData) return;
+
+    // Disable button to prevent double-clicks
+    document.getElementById('finalSubmitBtn').disabled = true;
+    document.getElementById('finalSubmitBtn').textContent = "Menghantar...";
+
     // AUTOMATIC DATE & TIME GENERATION
     const sekarang = new Date();
     const tarikh = sekarang.toLocaleDateString('ms-MY', {
@@ -78,30 +119,33 @@ document.getElementById('visitorForm').addEventListener('submit', async (e) => {
         month: '2-digit',
         year: 'numeric'
     });
-    const masa = sekarang.toLocaleTimeString('ms-MY', {
+    const masa = sekarang.toLocaleTimeString('en-US', {
         hour: '2-digit',
         minute: '2-digit',
         hour12: true
     });
 
     try {
+        // Save permanently to Firebase
         await db.collection("pendaftaran").add({
-            namaPelawat,
-            kpPelawat,
-            telPelawat,
-            hubungan,
-            namaBanduan,
-            noDaftarBanduan,
-            tarikh,      // Saved automatically
-            masa,        // Saved automatically
+            namaPelawat: verifiedData.namaPelawat,
+            kpPelawat: verifiedData.kpPelawat,
+            telPelawat: verifiedData.telPelawat,
+            hubungan: verifiedData.hubungan,
+            namaBanduan: verifiedData.namaBanduan,
+            noDaftarBanduan: verifiedData.noDaftarBanduan,
+            tarikh,      
+            masa,        
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         });
 
-        document.getElementById('visitorForm').reset();
+        // Show final success notification card
+        document.getElementById('reviewContainer').classList.add('hidden');
         document.getElementById('successMessage').classList.remove('hidden');
-        document.getElementById('visitorForm').classList.add('hidden');
     } catch (error) {
         console.error("Error saving data: ", error);
         alert("Ralat semasa menghantar pendaftaran. Sila cuba lagi.");
+        document.getElementById('finalSubmitBtn').disabled = false;
+        document.getElementById('finalSubmitBtn').textContent = "Hantar";
     }
 });
