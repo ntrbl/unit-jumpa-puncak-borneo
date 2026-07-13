@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-    --bg-page: #f8fafc;        /* Soft, premium slate-white background */
-    --bg-card: #ffffff;        /* Pure white for maximum inner contrast */
-    --primary-blue: #1e40af;   /* Elegant deep blue */
-    --accent-blue: #3b82f6;    /* Vibrant sky blue for interactions */
-    --text-dark: #0f172a;      /* Deep navy for high-contrast reading */
-    --text-slate: #475569;     /* Readable grey for secondary text */
-    --border-light: #e2e8f0;   /* Clean separator line */
-    --border-input: #cbd5e1;   /* Clear, visible border for fields */
+    --bg-page: #f8fafc;        
+    --bg-card: #ffffff;        
+    --primary-blue: #1e40af;   
+    --accent-blue: #3b82f6;    
+    --text-dark: #0f172a;      
+    --text-slate: #475569;     
+    --border-light: #e2e8f0;   
+    --border-input: #cbd5e1;   
 }
 
 body {
