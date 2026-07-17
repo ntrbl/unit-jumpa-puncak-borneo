@@ -28,8 +28,8 @@
         <div class="form-card shadow-lg">
             <div class="card-header">
                 <img src="logo.png" alt="Logo Penjara" class="card-logo" onerror="this.style.display='none'">
-                <h2 class="card-title">Borang Pendaftaran Masuk</h2>
-                <p class="card-subtitle">Sila isi maklumat anda di bawah dengan jelas.</p>
+                <h2 class="card-title">Sistem Pendaftaran Pelawat</h2>
+                <p class="card-subtitle">Sila isi maklumat pendaftaran di bawah dengan lengkap dan sahih.</p>
             </div>
             
             <!-- 1. EDITABLE INPUT FORM -->
@@ -37,12 +37,12 @@
                 <!-- SEKSYEN 1: PELAWAT -->
                 <div class="form-section">
                     <h3 class="section-title">
-                        <span class="step-badge">1</span> Maklumat Diri Anda (Pelawat)
+                        <span class="step-badge">1</span> Maklumat Peribadi Pelawat
                     </h3>
                     
                     <div class="input-group">
-                        <label class="input-label">Nama Penuh Anda</label>
-                        <input type="text" id="namaPelawat" required class="form-input" placeholder="Tulis nama penuh anda">
+                        <label class="input-label">Nama Penuh<span class="optional-text"> (Seperti Dalam MyKad/Pasport)</span></label>
+                        <input type="text" id="namaPelawat" required class="form-input">
                     </div>
                     
                     <div class="input-group">
@@ -56,9 +56,9 @@
                     </div>
                     
                     <div class="input-group">
-                        <label class="input-label">Hubungan dengan Banduan</label>
+                        <label class="input-label">Hubungan Dengan Banduan</label>
                         <select id="hubungan" required class="form-input select-input">
-                            <option value="">-- Sila Pilih Hubungan --</option>
+                            <option value="">-- Sila Pilih Kategori Hubungan --</option>
                             <option value="Ibu / Bapa">Ibu / Bapa</option>
                             <option value="Suami / Isteri">Suami / Isteri</option>
                             <option value="Anak">Anak</option>
@@ -71,16 +71,16 @@
                 <!-- SEKSYEN 2: BANDUAN -->
                 <div class="form-section no-border">
                     <h3 class="section-title">
-                        <span class="step-badge">2</span> Maklumat Orang Yang Ditemui
+                        <span class="step-badge">2</span> Maklumat Orang Yang Ditemui (Banduan)
                     </h3>
                     
                     <div class="input-group">
                         <label class="input-label">Nama Penuh Banduan</label>
-                        <input type="text" id="namaBanduan" required class="form-input" placeholder="Tulis nama penuh banduan">
+                        <input type="text" id="namaBanduan" required class="form-input">
                     </div>
                     
                     <div class="input-group">
-                        <label class="input-label">No. Daftar Banduan <span class="optional-text">(Jika ada)</span></label>
+                        <label class="input-label">No. Daftar Banduan<span class="optional-text"> (Jika berkenaan)</span></label>
                         <input type="text" id="noDaftarBanduan" class="form-input" placeholder="Contoh: PPB12345">
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                 </div>
 
                 <button type="submit" class="submit-btn">
-                    Semak Maklumat Pendaftaran
+                    Teruskan
                 </button>
             </form>
 
